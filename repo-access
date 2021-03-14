@@ -1,0 +1,2 @@
+Ssh git@rbei-fs2 | grep lta => R  	test/gen3/lta
+Ssh git@hi2app17 | grep lta => R W	test/gen3/lta 
