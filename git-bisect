@@ -1,0 +1,6 @@
+Git bisect start
+Git bisect bad => means you know in i35 it failed
+Git bisect good => means you know in i30 it's working
+
+Instead of manually picking each commit and testing, you can use git bisect which would do a binary search on the commits. You can also manually do a binary search. But, git bisect will do this for you.
+
