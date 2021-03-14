@@ -1,0 +1,11 @@
+1)First select "Amend last commit" in git gui and then move the file which is not required in this commit out of the staging area [OR] 
+Git rebase -I commit_Id_to_be_edited^ => (i)
+Give "e" for your commit of interest
+Git reset HEAD^ => this will move everything in (i) to unstaged area
+
+2)Git status => will show the unstaged file
+3)Git add --patch "unstaged file" or git add -p "filename"
+4)commit the changes
+5)Git rebase --continue
+6)push the changes
+
