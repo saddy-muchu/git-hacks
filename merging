@@ -1,0 +1,32 @@
+git checkout <master_branch>
+git merge <branch to be merged>
+do a commit and push via git gui
+
+
+
+There are basically two ways to merge 
+1) merge and resolve all the merge conflicts in the merge commit - especially for bigger changes like here this makes it quite hard to see in git commits what has changed - and how it revers to the different merged commits - all differences are hiding in the one huge merge commit 
+2) revert conflicting changes, do a clean merge (no conflicts) reapply the conflicting stuff 
+
+You used 1 
+I had some discussions with more experienced gatekeepers in the past and they generally recommend to only use the second approach - for maintenance reasons 
+Therefore I did so when merging the other ECM changes to certhandler 
+
+Please give the pattern 2 a try. 
+For the moment do this on a different devel branch to see and test if the pattern works for you. 
+That way you can always switch back to the current devel branch or use it for comparison. 
+
+Please have a look into adit_master how merges from ECM to certhandler branch have been done in the past. 
+For example changes of SWGIII-38291 could be merged cleanly without any revert 
+For merging SECWPK-778/779 (from sdcecm_v1.x_j06) to certhandler I had to revert most of the commits for SECWPK-778 - SECWPK-779 commit didn't need to be reverted 
+These revert commits have some commit message telling that it is reverted for clean merge and that it will be reapplied (see 274ff7089e9696ddc54679dea8e64b3b273990a3 for an example) 
+After the clean merge the changes are reapplied (e.g. 274ff7089e9696ddc54679dea8e64b3b273990a3) 
+Also there the commit has some extra text
+ (Adjust ebc92d1dd89efd08fd657089e19eeb16469a2308 to certhandler version)
+    Signed-off-by: Christoph Gellner <cgellner@de.adit-jv.com>
+telling that it is an adjusted and reapplied version of another commit 
+
+What I usually do is trying to merge the commits one by one to identify which commits are causing troubles - just to identify conflicts 
+Then I switch back to the branch I want to merge and revert those problematic commits and adjust the commit messages of the reverts accordingly - I try to keep the reverted commits in the reversed order of the original commits 
+Afterwards I can do a clean merge - but conflicting changes are missing at this point in time (e.g. f66938c90c2d2d7971af59ccde09a09304dad250) 
+Finally I reapply (cherry pick) the commits I previously reverted, resolve conflicts during cherry pick and adjust the commit message
