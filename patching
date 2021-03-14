@@ -1,0 +1,11 @@
+Applying a patch:
+
+"Patch" is nothing but a difference file that is created after doing a change on a file.
+
+	1) Cd /home/sadiqhm/qnx/h08/lta/test/aauto
+	2) Vi makefile => do some changes in the makefile
+	3) Git status
+	4) Git diff > ~/taauto.patch => writing the difference file to ~/taauto.patch
+	5) Git apply ~/taauto.patch [OR] git am ~/taauto.patch => this will directly this patch to that
+	"particular file" itself.
+
