@@ -1,0 +1,29 @@
+Type "git mergetool". This will open meld or any diff tool. Now, you can see where there are conflicts.
+
+Refer the below link:
+https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git 
+
+Don't resolve merge conflicts of other's branches as you don't know which is the latest change.
+
+Using KDiff3
+
+sudo apt-get install kdiff3
+git config --global merge.tool kdiff3
+git config --global diff.tool kdiff3
+ 
+When you have a merge conflict you can call it as usual using “git mergetool”
+ 
+On the top it shows you 3 columns
+1) Version before conflicting changes
+2) First conflicting commit (e.g. when two developers have changed the same file the one of developer A)
+3) Second conflicting commit (e.g. when two developers have changed the same file the one of developer B)
+Below you have an editor view showing your final result.
+
+Now, once you have a merge conflict, then the "editor view" will highlight the conflict in yellow in the three columns. You can select the column which is to be merged using A/B/C menubar on top. After selecting the column, that particular column change will appear in this "editor view". 
+
+Leftmost in the editor view will show the column(A/B/C).
+
+Now, you have resolved your first merge conflict. Next, go to your next merge conflict by clicking on the arrow which says "go to next unresolved conflict".
+
+Follow the same process again by giving git rebase --continue
+
