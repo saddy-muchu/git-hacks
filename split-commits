@@ -1,0 +1,15 @@
+Git rebase -I commit_Id_to_be_edited^ => (i)
+Give "e" for your commit of interest
+Git reset HEAD^ => this will move everything in (i) to unstaged area
+Choose the required commits and add to staging area and commit them
+Finally, after all adding and commiting is done, then do git rebase --continue
+Push the changes to the branch
+
+Alternative:
+
+Give 'e' in the rebase window for the particular commit which u want to split.
+The go to git gui, give "amend last commit". 
+Through this, you can unstage the already commited changes and commit the particular changes in dedicated commits.
+Later give "git rebase --continue".
+Then push
+
