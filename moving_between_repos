@@ -1,0 +1,30 @@
+1)git clone ssh://git@rbei-fs2.adit-jv.com/test/gen3/lta
+2)cd lta
+3)git checkout "branch where all updated sources are there"
+4)git branch -D master
+5)git remote rm origin
+6)git filter-branch --subdirectory-filter test/bdcl/ -- --all(filter out the contents of interest)
+If the test component is old and if you want the old history from an older tag, then you need to do:
+git filter-branch --index-filter 'git rm --cached -qr --ignore-unmatch -- . && git reset -q $GIT_COMMIT -- <<subfolder_path>>' --prune-empty -- --all
+
+7)mkdir test
+8)mkdir test/bdcl
+9)ls(to see what contents needs to be moved)
+10)git mv "content1" "content2"…."content N"
+11)git commit -s(for sign off) -m(message) "TSTWPK-915:T_BDCL:Prepare test code for movement"
+12)cd ..
+13)git clone ssh://git@hi2app17.adit-jv.com/test/bdcl-test(cloning the destination repo)
+14)cd bdcl-test
+15)git checkout -b adit_master(adit_master branch won't be there. Hence, we need to create it and then move to that branch)
+16)git remote add _local_lta(can give any name of interest) /home/sadiqhm/project/lta/(
+To communicate with the outside world, git uses what are called remotes. These are repositories other than the one on your local disk which you can push your changes into.Here, a new remote called  _local_lta is created and you can push to  _local_lta instead of typing the whole path)
+
+17)git fetch _local_lta(fetch all branches and tags)
+18)git checkout _local_lta/adit_devel_tbdcl -b _local_adit-master(we need to checkout to local master in the current repo so that there are no merge conflicts. You can't merge a branch of one repo to a branch of another repo)
+19)git pull --rebase origin adit_master
+20)git merge _local_adit-master
+21)git branch -D _local_adit-master
+22)git remote remove _local_lta
+23)git push origin adit_master
+
+
