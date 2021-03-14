@@ -1,0 +1,3 @@
+Git reflog ===> shows all the commits with their commit ID's
+Take the commit ID that was lost.
+Later do git reset --hard <commit ID>
