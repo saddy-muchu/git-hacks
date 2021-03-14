@@ -1,0 +1,21 @@
+Rebasing your branch on top of latest master( useful for fisheye review)
+	1) Say, you are on your devel branch. Do, git checkout adit_master so as to switch to the master branch
+	2) Git pull
+	3) Gitk => this will now show that u have the latest master
+	4) Git checkout "ur devel branch"
+	5) Git rebase -i adit_master => options to change commit message, squashing etc are shown when u do this. This is called interactive mode.
+	6) Now again check if the compilation of ur code is successful
+	7) Git push origin "ur devel branch"
+
+Options in interactive mode are:
+
+1)Reword('r') => editing the commit message. This is the same as clicking on "amend last commit" in git gui or giving "git commit --amend" via the command line.
+2)Squash('s') => making multiple commits into a single commit. Importantly, it squashes a current commit into a previous commit. So, give 's' for current commit.
+
+You can squash multiple commits to one commit at one go.
+
+3)Fixup('f') => same as squash. But, you don’t have to hit 'dd' for deleting previous commit as in the case of squash.
+3)pick('p') => this is the default option. You can re-order commits by using this. Just cut the entire line and put it at the appropriate place.
+
+Just give git rebase -i "commit id" so as to use the above options in interactive mode.
+Do git rebase --continue so as to continue the rebase operation if git has kept the rebase operation on hold.
