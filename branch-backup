@@ -1,0 +1,8 @@
+Say branch is adit_devel_SOPL-7118, take backup of the branch by doing "git checkout -b adit_devel_SOPL-7118_backup".
+
+Then again switch  to ur original branch i.e. "git checkout adit_devel_SOPL-7118"
+
+Do all the experimenting like rebase and all in this original branch
+
+Then do a diff of "backup" and "original branch" using git difftool (ideally, there should be no changes).
+
