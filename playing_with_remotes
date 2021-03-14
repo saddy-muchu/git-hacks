@@ -1,0 +1,20 @@
+Getting to know the list of remotes:
+
+git remote
+
+Then push to your particular remote using git push <remote_name> <branch_name>
+
+STEPS:
+
+git remote add renesas_optee https://github.com/renesas-rcar/optee_os.git
+
+git fetch renesas_optee
+
+git checkout renesas_optee/rcar_gen3_3.8.0_2 -b 3.8_test_optee
+
+git checkout adit_v3.1.0_master
+
+git checkout -b test_3.8_renesas_optee
+
+merge 3.8_test_optee to test_3.8_renesas_optee
+
