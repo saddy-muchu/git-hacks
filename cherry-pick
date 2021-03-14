@@ -1,0 +1,10 @@
+1)This is used to move some commits from one development branch to another.
+
+2)Useful while doing hotfixes when we want to cherry pick a commit from the current branch in latest build(with latest changes) to an older branch in the stabi-hotfix build(this also should have all latest changes whatever is there in the current branch). 
+
+Checkout the branch where the cherry picked commits have to come. Do "gitk branch_name" where "branch_name" is the branch from which commits have to be cherry picked => right click on the commit you want to cherry pick => click cherry pick = refresh gitk => you will see the cherry picked stuff now on head => then do git push via gui
+
+3)If you want to cherry pick multiple commits, then always cherry pick from bottom to top that is appearing in the gitk window (similar to picking grapes from a tree). But, with rebasing you don't have to worry about all this as rebase will move these multiple commits in correct sequence.
+
+git cherry-pick -x(for cherry picking) -S(sign off) [commit]
+
