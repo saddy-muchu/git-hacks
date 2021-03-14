@@ -1,0 +1,49 @@
+When remote/origin is lost in your devel branch:
+
+Git checkout -b tmp
+Git checkout -d "devel branch"
+Git checkout "devel branch"
+
+
+
+SQUASHING:
+
+
+Order appearing in rebase window:
+C4
+C3
+C2
+C1 -> to be squashed to C3
+C0 -> to be squashed to C3
+
+First squash C1 to C3 and then squash C0 to C3. Otherwise, there will be a big issue
+
+
+
+
+
+Rebasing on master for a branch checkout out from another branch
+
+Say branch1 has some changes.
+Branch2 is checked out from branch1
+You want to rebase branch2 on latest master now.
+Then rebase branch1 first on latest master and then rebase branch2 on updated branch1
+
+
+
+Branch2 checked out from branch1:
+
+You checked out branch1 from branch2.
+You made changes to branch2 and now you want branch1 to be on latest branch2.
+Rebase branch1 on latest branch2
+Just to make sure nothing is affected, run a difftool between branch1 and origin/branch1.
+
+
+git difftool -t meld "origin/branch1" "origin/branch2" => just to check if your rebase hasn't caused code changes between the two branches.
+You can also give git difftool -t meld "commit1" "commit2".  
+
+branchdiff tool is implemented in python(needs 3.6.6). A branchdiff plugin can be installed for jenkins jobs.
+
+Usage Syntax: Branchdiff -r "repo name" -1 "branch1" -2 "branch2" -o(i.e. output) report.xlsx
+
+The branchdiff tool will do a "git fetch all" by default so as to compare on the latest.
